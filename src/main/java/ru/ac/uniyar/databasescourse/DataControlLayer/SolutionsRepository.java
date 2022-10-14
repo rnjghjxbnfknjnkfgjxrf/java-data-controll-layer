@@ -12,8 +12,6 @@ import java.util.HashSet;
 
 public class SolutionsRepository {
     private final Connection con;
-    private HashMap<Integer, Solution> solutions = new HashMap<>();
-
     public SolutionsRepository(Connection con) {
         this.con = con;
     }
@@ -41,12 +39,13 @@ public class SolutionsRepository {
         }
     }
 
-    public void loadData() throws DataControlLayerException {
+    public HashSet<Solution> loadData() throws DataControlLayerException {
+        HashSet<Solution> solutions = new HashSet<>();
         try (Statement statement = con.createStatement()) {
             try (ResultSet rs = statement.executeQuery(
                     "SELECT id, score, hasPassed, studentId, reviewerId FROM solutions;")) {
                 while (rs.next()) {
-                    solutions.put(rs.getInt(1), new Solution(
+                    solutions.add(new Solution(
                             rs.getInt(1),
                             rs.getFloat(2),
                             rs.getBoolean(3),
@@ -60,6 +59,7 @@ public class SolutionsRepository {
         } catch (SQLException ex) {
             throw new StatementCreationException(ex);
         }
+        return solutions;
     }
 
     public void addSolutions(HashSet<Solution> solutionsSet) throws DataControlLayerException {
@@ -81,9 +81,5 @@ public class SolutionsRepository {
         } catch (SQLException ex) {
             throw new StatementCreationException(ex);
         }
-    }
-
-    public ArrayList<Solution> getSolutions() {
-        return new ArrayList<>(solutions.values());
     }
 }

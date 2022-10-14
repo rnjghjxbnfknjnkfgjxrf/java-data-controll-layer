@@ -6,13 +6,10 @@ import ru.ac.uniyar.databasescourse.DataControlLayer.Exeptions.StatementCreation
 import ru.ac.uniyar.databasescourse.DataControlLayer.Exeptions.StatementExecutionException;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 
 class StudentsRepository {
     private final Connection con;
-    private HashMap<Integer, Student> students = new HashMap<>();
 
     public StudentsRepository(Connection con) {
         this.con = con;
@@ -36,11 +33,12 @@ class StudentsRepository {
         }
     }
 
-    public void loadData() throws DataControlLayerException {
+    public HashSet<Student> loadData() throws DataControlLayerException {
+        HashSet<Student> students = new HashSet<>();
         try (Statement statement = con.createStatement()) {
             try (ResultSet rs = statement.executeQuery("SELECT id, name, surname FROM students;")){
                 while (rs.next()) {
-                    students.put(rs.getInt(1), new Student(
+                    students.add(new Student(
                             rs.getInt(1),
                             rs.getString(2),
                             rs.getString(3)
@@ -52,6 +50,7 @@ class StudentsRepository {
         } catch (SQLException ex) {
             throw new StatementCreationException(ex);
         }
+        return students;
     }
 
     public void addStudents(HashSet<Student> studentsSet) throws DataControlLayerException {
@@ -71,9 +70,5 @@ class StudentsRepository {
         } catch (SQLException ex) {
             throw new StatementCreationException(ex);
         }
-    }
-
-    public ArrayList<Student> getStudents(){
-        return new ArrayList<>(students.values());
     }
 }

@@ -47,9 +47,8 @@ public class DataBase {
         return DriverManager.getConnection(URL, user, password);
     }
 
-    public ArrayList<Student> getStudents() throws DataControlLayerException {
-        this.studentsRepository.loadData();
-        return this.studentsRepository.getStudents();
+    public HashSet<Student> getStudents() throws DataControlLayerException {
+        return this.studentsRepository.loadData();
     }
     public void addStudents(HashSet<Student> students) throws DataControlLayerException {
         this.studentsRepository.addStudents(students);
@@ -64,9 +63,8 @@ public class DataBase {
     public void addReviewers(HashSet<Reviewer> reviewers) throws DataControlLayerException {
         this.reviewersRepository.addReviewers(reviewers);
     }
-    public ArrayList<Reviewer> getReviewers() throws DataControlLayerException {
-        this.reviewersRepository.loadData();
-        return this.reviewersRepository.getReviewers();
+    public HashSet<Reviewer> getReviewers() throws DataControlLayerException {
+        return this.reviewersRepository.loadData();
     }
 
     public void createSolutionsTable() throws DataControlLayerException {
@@ -75,9 +73,8 @@ public class DataBase {
     public void addSolutions(HashSet<Solution> solutions) throws DataControlLayerException {
         this.solutionsRepository.addSolutions(solutions);
     }
-    public ArrayList<Solution> getSolutions() throws DataControlLayerException {
-        this.solutionsRepository.loadData();
-        return this.solutionsRepository.getSolutions();
+    public HashSet<Solution> getSolutions() throws DataControlLayerException {
+        return this.solutionsRepository.loadData();
     }
 
 

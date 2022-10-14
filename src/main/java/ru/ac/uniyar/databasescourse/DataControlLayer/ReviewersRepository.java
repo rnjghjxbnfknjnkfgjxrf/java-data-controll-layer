@@ -12,7 +12,6 @@ import java.util.HashSet;
 
 public class ReviewersRepository {
     private final Connection con;
-    private HashMap<Integer, Reviewer> reviewers = new HashMap<>();
 
     public ReviewersRepository(Connection con) {
         this.con = con;
@@ -36,11 +35,12 @@ public class ReviewersRepository {
         }
     }
 
-    public void loadData() throws DataControlLayerException {
+    public HashSet<Reviewer> loadData() throws DataControlLayerException {
+        HashSet<Reviewer> reviewers = new HashSet<>();
         try (Statement statement = con.createStatement()) {
             try (ResultSet rs = statement.executeQuery("SELECT id, surname, department FROM reviewers;")) {
                 while (rs.next()) {
-                    reviewers.put(rs.getInt(1), new Reviewer(
+                    reviewers.add(new Reviewer(
                             rs.getInt(1),
                             rs.getString(2),
                             rs.getString(3)
@@ -52,6 +52,7 @@ public class ReviewersRepository {
         } catch (SQLException ex) {
             throw new StatementCreationException(ex);
         }
+        return reviewers;
     }
     public void addReviewers(HashSet<Reviewer> reviewersSet) throws DataControlLayerException {
         try (PreparedStatement reviewersInsert = con.prepareStatement(
@@ -70,9 +71,5 @@ public class ReviewersRepository {
         }catch (SQLException ex) {
             throw new StatementCreationException(ex);
         }
-    }
-
-    public ArrayList<Reviewer> getReviewers() {
-        return new ArrayList<>(reviewers.values());
     }
 }

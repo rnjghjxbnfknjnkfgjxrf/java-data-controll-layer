@@ -19,7 +19,7 @@ public class DatabaseExample {
     public static void main(String[] args){
         try {
             DataBase db = new DataBase();
-            ArrayList<Solution> solutions = db.getSolutions();
+            HashSet<Solution> solutions = db.getSolutions();
             solutions.forEach(System.out::println);
         } catch (DataControlLayerException ex) {
             System.out.println(ex.getMessage());
