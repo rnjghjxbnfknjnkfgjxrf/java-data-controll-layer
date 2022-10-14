@@ -1,4 +1,4 @@
-package ru.ac.uniyar.databasescourse.DataControlLayer.Exeptions;
+package ru.ac.uniyar.databasescourse.datacontrollayer.exeptions;
 
 import java.sql.SQLException;
 

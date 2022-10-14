@@ -1,17 +1,16 @@
 package ru.ac.uniyar.databasescourse;
 
 
-import ru.ac.uniyar.databasescourse.DataControlLayer.DataBase;
-import ru.ac.uniyar.databasescourse.DataControlLayer.Entity.Reviewer;
-import ru.ac.uniyar.databasescourse.DataControlLayer.Entity.Solution;
-import ru.ac.uniyar.databasescourse.DataControlLayer.Entity.Student;
-import ru.ac.uniyar.databasescourse.DataControlLayer.Exeptions.DataControlLayerException;
+import ru.ac.uniyar.databasescourse.datacontrollayer.DataBase;
+import ru.ac.uniyar.databasescourse.datacontrollayer.entity.Reviewer;
+import ru.ac.uniyar.databasescourse.datacontrollayer.entity.Solution;
+import ru.ac.uniyar.databasescourse.datacontrollayer.entity.Student;
+import ru.ac.uniyar.databasescourse.datacontrollayer.exeptions.DataControlLayerException;
 import ru.ac.uniyar.databasescourse.utils.SomeCsvDataLoader;
 
 import java.io.IOException;
 import java.nio.file.Path;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 
 public class DatabaseExample {

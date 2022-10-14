@@ -1,9 +1,9 @@
 package ru.ac.uniyar.databasescourse.utils;
 
 import de.siegmar.fastcsv.reader.CsvReader;
-import ru.ac.uniyar.databasescourse.DataControlLayer.Entity.Reviewer;
-import ru.ac.uniyar.databasescourse.DataControlLayer.Entity.Solution;
-import ru.ac.uniyar.databasescourse.DataControlLayer.Entity.Student;
+import ru.ac.uniyar.databasescourse.datacontrollayer.entity.Reviewer;
+import ru.ac.uniyar.databasescourse.datacontrollayer.entity.Solution;
+import ru.ac.uniyar.databasescourse.datacontrollayer.entity.Student;
 
 import java.io.IOException;
 import java.nio.file.Path;

@@ -1,4 +1,4 @@
-package ru.ac.uniyar.databasescourse.DataControlLayer.Entity;
+package ru.ac.uniyar.databasescourse.datacontrollayer.entity;
 
 import de.siegmar.fastcsv.reader.CsvRow;
 

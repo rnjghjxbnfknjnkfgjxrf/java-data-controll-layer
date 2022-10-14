@@ -1,9 +1,9 @@
-package ru.ac.uniyar.databasescourse.DataControlLayer;
+package ru.ac.uniyar.databasescourse.datacontrollayer;
 
-import ru.ac.uniyar.databasescourse.DataControlLayer.Entity.Student;
-import ru.ac.uniyar.databasescourse.DataControlLayer.Exeptions.DataControlLayerException;
-import ru.ac.uniyar.databasescourse.DataControlLayer.Exeptions.StatementCreationException;
-import ru.ac.uniyar.databasescourse.DataControlLayer.Exeptions.StatementExecutionException;
+import ru.ac.uniyar.databasescourse.datacontrollayer.entity.Student;
+import ru.ac.uniyar.databasescourse.datacontrollayer.exeptions.DataControlLayerException;
+import ru.ac.uniyar.databasescourse.datacontrollayer.exeptions.StatementCreationException;
+import ru.ac.uniyar.databasescourse.datacontrollayer.exeptions.StatementExecutionException;
 
 import java.sql.*;
 import java.util.HashSet;
