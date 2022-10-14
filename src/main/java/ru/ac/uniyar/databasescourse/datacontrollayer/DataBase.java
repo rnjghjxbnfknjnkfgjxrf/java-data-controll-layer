@@ -46,6 +46,9 @@ public class DataBase {
         return DriverManager.getConnection(URL, user, password);
     }
 
+    public Statement getStatement() {
+        return this.statement;
+    }
     public HashSet<Student> getStudents() throws DataControlLayerException {
         return this.studentsRepository.loadData();
     }

@@ -2,10 +2,12 @@ package ru.ac.uniyar.databasescourse;
 
 
 import ru.ac.uniyar.databasescourse.datacontrollayer.DataBase;
+import ru.ac.uniyar.databasescourse.datacontrollayer.entity.Report;
 import ru.ac.uniyar.databasescourse.datacontrollayer.entity.Reviewer;
 import ru.ac.uniyar.databasescourse.datacontrollayer.entity.Solution;
 import ru.ac.uniyar.databasescourse.datacontrollayer.entity.Student;
 import ru.ac.uniyar.databasescourse.datacontrollayer.exeptions.DataControlLayerException;
+import ru.ac.uniyar.databasescourse.datacontrollayer.ReportsGenerator;
 import ru.ac.uniyar.databasescourse.utils.SomeCsvDataLoader;
 
 import java.io.IOException;
@@ -18,8 +20,9 @@ public class DatabaseExample {
     public static void main(String[] args){
         try {
             DataBase db = new DataBase();
-            HashSet<Solution> solutions = db.getSolutions();
-            solutions.forEach(System.out::println);
+            ReportsGenerator repGen = new ReportsGenerator(db);
+            Report rep =  repGen.getStudentsWithMinMaxScore();
+            rep.discribe.forEach(System.out::println);
         } catch (DataControlLayerException ex) {
             System.out.println(ex.getMessage());
         }
